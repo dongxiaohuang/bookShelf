@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Book} from "./book";
+import {Book} from "../shared/book";
 
 @Injectable()
 export class LibraryService {

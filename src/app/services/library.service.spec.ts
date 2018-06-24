@@ -1,15 +1,48 @@
-import { TestBed, inject } from '@angular/core/testing';
+/* tslint:disable:no-unused-variable */
 
-import { LibraryService } from './library.service';
+import {TestBed, async, inject} from '@angular/core/testing';
+import {LibraryService} from './library.service';
+import {Book} from "../shared/book";
+
+function createBookFixture(book_id) {
+  return new Book(
+    book_id,
+    "title",
+    "subTitle:",
+    ["authors"],
+    "publisher",
+    "publishDate",
+    "description",
+    ["categories"],
+    "thumbnail",
+    "smallThumbnail"
+  )
+}
 
 describe('LibraryService', () => {
+  let libraryService;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [LibraryService]
     });
+    libraryService = TestBed.get(LibraryService);
   });
 
-  it('should be created', inject([LibraryService], (service: LibraryService) => {
-    expect(service).toBeTruthy();
-  }));
+
+  it('can add a book to the library', () => {
+    //TODO
+  });
+
+  it('can remove a book to the library', () => {
+    //TODO
+  });
+
+  it('checks if a book is already in the library', () => {
+    //TODO
+  });
+
+  it('can save and load the books', () => {
+    //TODO
+  });
 });

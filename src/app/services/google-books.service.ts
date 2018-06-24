@@ -1,10 +1,8 @@
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/toPromise';
-import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
-import {Observable} from 'rxjs/Observable';
-import {Book} from './book';
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
+import { map, do } from 'rxjs/operators';
+import { Book } from '../shared/book';
 
 @Injectable()
 export class GoogleBooksService {
@@ -52,16 +50,16 @@ export class GoogleBooksService {
     this.initialised = true;
     this.books = [];
     this.http.get(`${this.API_PATH}?q=${this.query}&maxResults=${this.pageSize}&startIndex=${this.startIndex}`)
-      .map(res => res.json())
+      .pipe(map(res => res.json()))
       .do(data => {
         this.totalItems = data.totalItems;
       })
-      .map(data => {
+      .pipe(map(data => {
         return data.items ? data.items : [];
-      })
-      .map(items => {
+      }))
+      .pipe(map(items => {
         return items.map(item => this.bookFactory(item))
-      })
+      }))
       // .do(books => console.log(books))
       .do(_ => this.loading = false)
       .subscribe((books) => this.books = books)
@@ -69,6 +67,8 @@ export class GoogleBooksService {
 
   retrieveBook(bookId: string) {
     return this.http.get(`${this.API_PATH}/${bookId}`)
+     .pipe(map(res => res.json()))
+     .pipe(map(item => this.bookFactory(item)))
   }
 
   private bookFactory(item: any): Book {
