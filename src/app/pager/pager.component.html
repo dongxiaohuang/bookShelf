@@ -1,12 +1,14 @@
 <nav>
-  <ul class="pager">
-    <li>
-      <a> &larr; Previous
+  <ul class="btn">
+    <li [hidden] = "page === 1 ">
+      <a (click)="prev()"> &larr; Previous
       </a>
     </li>
-    <li>
-      <a>Next &rarr;
+    <li [hidden] = "page === totalPages || totalPages === 0">
+      <a (click)="next()">Next &rarr;
       </a>
     </li>
   </ul>
 </nav>
+{{page}} and <br />
+{{totalPages}}
