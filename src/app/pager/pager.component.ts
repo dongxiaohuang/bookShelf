@@ -8,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 export class PagerComponent implements OnInit {
 
   constructor() { }
+  next() {
+    //TODO
+  }
 
+  prev() {
+    //TODO
+  }
   ngOnInit() {
   }
 

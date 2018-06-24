@@ -7,6 +7,7 @@ import { PagerComponent } from './pager/pager.component';
 import { SearchComponent } from './search/search.component';
 import { HeaderComponent } from './header/header.component';
 import { BookListComponent } from './book-list/book-list.component';
+import { BookComponent } from './book/book.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { BookListComponent } from './book-list/book-list.component';
     PagerComponent,
     SearchComponent,
     HeaderComponent,
-    BookListComponent
+    BookListComponent,
+    BookComponent
   ],
   imports: [
     BrowserModule
